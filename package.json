@@ -1,0 +1,27 @@
+{
+  "name": "traverse-grid",
+  "version": "1.0.0",
+  "description": "Traverse a grid a thousand ways the easy way",
+  "main": "traverse-grid.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Crabcyborg/traverse-grid.git"
+  },
+  "keywords": [
+    "javascript",
+    "integer",
+    "compression",
+    "short",
+    "string",
+    "standalone"
+  ],
+  "author": "Crabcyborg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Crabcyborg/traverse-grid/issues"
+  },
+  "homepage": "https://github.com/Crabcyborg/traverse-grid#readme"
+}
