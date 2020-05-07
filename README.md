@@ -14,7 +14,7 @@ Several of the methods are illustrated in the form of a blog post here https://c
 The package is free to use for any use. I would love to know if you use it in your project.
 
 ```
-import { traverse as t } from '$app/traverse-grid';
+import { traverse as t } from 'traverse-grid';
 t.spiral(5,5).map(({x,y}) => {});
 t.snake(5,5).concatenate(t.diamond(5,5), 'horizontal').forEach(({index, point}) => {});
 ```
