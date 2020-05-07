@@ -18,3 +18,7 @@ import { traverse as t } from 'traverse-grid';
 t.spiral(5,5).map(({x,y}) => {});
 t.snake(5,5).concatenate(t.diamond(5,5), 'horizontal').forEach(({index, point}) => {});
 ```
+
+# Why would anyone want that you ask?
+
+I developed this package as a strategy to compressing my data. It also has a lot of potential for generating art. I believe this could be useful for many applications.
