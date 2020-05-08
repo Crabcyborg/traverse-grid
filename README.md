@@ -1,5 +1,7 @@
 # traverse-grid
 
+documentation https://traverse-grid.crabcyb.org/
+
 The main goals of traverse-grid are:
 1. Allow iteration through a grid of data in a repeatable pre-defined sequence
 2. Provide many methods to traverse through a grid of data to best solve a problem
