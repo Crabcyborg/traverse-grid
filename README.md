@@ -1,6 +1,7 @@
 # traverse-grid
 
-documentation https://traverse-grid.crabcyb.org/
+visualization as a gradient https://traverse-grid.crabcyb.org/
+visualization as a path https://crabcyb.org/experiment/traverse-paperjs
 
 The main goals of traverse-grid are:
 1. Allow iteration through a grid of data in a repeatable pre-defined sequence
