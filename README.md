@@ -1,6 +1,7 @@
 # traverse-grid
 
 visualization as a gradient https://traverse-grid.crabcyb.org/
+
 visualization as a path https://crabcyb.org/experiment/traverse-paperjs
 
 The main goals of traverse-grid are:
