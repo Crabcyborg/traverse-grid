@@ -25,6 +25,10 @@ t.spiral(5,5).map(({x,y}) => {});
 t.snake(5,5).concatenate(t.diamond(5,5), 'horizontal').forEach(({index, point}) => {});
 ```
 
-### Why would anyone want that you ask?
+### What are its uses?
 
-I developed this package as a strategy to compressing my data. It also has a lot of potential for generating art. I believe this could be useful for many applications.
+I use it at a strategy for data compression https://crabcyb.org/post/traversing-shape-up
+
+I've used it to define an order that I draw in a Component https://crabcyb.org/experiment/traverse-draw-shapeup
+
+It can be used to generate gradients, define paths, and hopefully more! If you find a use, let me know!
