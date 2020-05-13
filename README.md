@@ -31,4 +31,4 @@ I use it at a strategy for data compression https://crabcyb.org/post/traversing-
 
 I've used it to define an order that I draw in a Component https://crabcyb.org/experiment/traverse-draw-shapeup
 
-It can be used to generate gradients, define paths, and hopefully more! If you find a use, let me know!
+It can be used to generate gradients and define paths. It could be used to create transition effects. If you find a use, let me know!
