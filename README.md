@@ -6,6 +6,8 @@ visualization as a path https://crabcyb.org/experiment/traverse-paperjs
 
 visualization as an animation https://crabcyb.org/experiment/traverse-animated
 
+additional mutations can be found here https://crabcyb.org/post/traverse-mutations 
+
 The main goals of traverse-grid are:
 1. Allow iteration through a grid of data in a repeatable pre-defined sequence
 2. Provide many methods to traverse through a grid of data to best solve a problem
@@ -14,8 +16,6 @@ The main goals of traverse-grid are:
 Written with no dependencies in ES6. Can be used via npm with `yarn add traverse-grid` or as a minified script available at https://unpkg.com/traverse-grid@latest/traverse-grid.min.js
 
 The script is 11KB minified.
-
-Several of the methods are illustrated in the form of a blog post here https://crabcyb.org/post/traversing-shape-up as well as here https://crabcyb.org/post/traverse-mutations 
 
 The package is free to use for any use. I would love to know if you use it in your project.
 
