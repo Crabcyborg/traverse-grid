@@ -109,10 +109,12 @@
 			}		
 			return d({ ...details, keyed });
 		},
-		bounce: details => {
-			let size = details.height * details.width, to = Math.floor(size/2), points = [];
-			for(let index = 0; index < to; ++index) points.push(details.points[index], details.points[size - index - 1]);
-			to < size/2 && (points.push(details.points[to]));
+		bounce: number => details => {
+			let size = details.points.length, to = Math.ceil(size/2), points = [];
+			for(let index = 0; index < to; index += number) {
+				for(let i = index; i < index+number && points.length < size; ++i) points.push(details.points[i]);
+				for(let i = size - index - 1, count = 0; count < number && points.length < size; --i, ++count) points.push(details.points[i]);
+			}
 			return k(details, points);
 		},
 		flip: type => details => {
@@ -236,9 +238,9 @@
 			let keyed = {};
 			for(let [x,y] of details.points) keyed[[y,x]] = details.keyed[[x,y]];
 			return d({ ...details, keyed, width: details.height, height: details.width });
-		},	
+		},
 		trade: details => {
-			let points = [], to = details.points.length-1;
+			let points = [], to = details.points.length;
 			for(let index = 0; index < to; index += 2) points.push(details.points[index+1], details.points[index]);
 			to < details.points.length && points.push(details.points[to]);
 			return k(details, points);
@@ -302,12 +304,9 @@
 	t.vertical = t.rotate(t.horizontal);
 	t.double = t.tile(t.horizontal(2,2));
 	t.snake = t.tile({ points: [[0,0], [0,1], [1,1], [1,0]], height: 2, width: 2 });
-	t.cascade = c(
-		({height}) => ['s', 0, height-2, 0, height-2, 2],
-		({direction, height, width, x, y, base_x, base_y}) => {
-			let even_height = height % 2 === 0, new_x = y >= height ? (base_y <= 0 ? ++base_x : base_x) : x+1;
-			return new_x === width ? ['s', ++base_x, 0, base_x, base_y, even_height ? 2 : 1] : ['s', new_x, y >= height ? Math.max(base_y -= 2, 0) : y, base_x, base_y, even_height ? 2 : (y >= height && base_y < 0 ? 1 : 2)];
-		}
+	t.cascade = number => c(
+		({height}) => ['s', 0, height-number, 0, height-number, number],
+		({direction, height, width, x, y, base_x, base_y}) => x === width-1 || y === height ? ['s', base_y <= 0 ? ++base_x : base_x, Math.max(base_y -= number, 0), base_x, base_y, base_y < 0 ? (height % number) || number : number] : ['s', x+1, y, base_x, base_y, number]
 	);
 	t.climb = c(({height}) => ['s', 0, height-1, -2, height-1, 1], ({direction, height, width, x, y, base_x, base_y}) => 
 		y < height && x < width ? [direction === 's' ? 'e' : 's', x, y, base_x, base_y, 1]

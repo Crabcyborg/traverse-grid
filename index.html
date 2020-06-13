@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#60f43c">
+		<meta name="Description" content="Crabcyborg">
+		<link href="https://fonts.googleapis.com/css?family=Cambay&display=swap" rel="stylesheet"> 
+		<style type="text/css">
+			img { max-width: 100%; }
+			img { border-style: none; }
+
+			h2, h3, h4, p, a, li, .cambay { font-family: 'Cambay', sans-serif; }
+			h2 { font-size: 1.4rem; }
+			h3 { font-size: 1.2rem; }
+			p, a { font-size: 1rem; }
+
+			.absolute-centered { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+			.unclickable { pointer-events: none; }
+			.clickable { pointer-events: auto; }
+			.overflow-x-hidden { overflow-x: hidden; }
+			.mt0 { margin-top: 0; }
+			.mt1 { margin-top: .25rem; }
+			.mt2 { margin-top: .5rem; }
+			.mt3 { margin-top: 1rem; }
+			.ml0 { margin-left: 0; }
+			.ml1 { margin-left: .25rem; }
+			.ml2 { margin-left: .5rem; }
+			.ml3 { margin-left: 1rem; }
+			.mr0 { margin-right: 0; }
+			.mr1 { margin-right: .25rem; }
+			.mr2 { margin-right: .5rem; }
+			.mr3 { margin-right: 1rem; }
+			.mb0 { margin-bottom: 0 }
+			.dib { display: inline-block; }
+			.fl { float: left; }
+			.fr { float: right }
+			.absolute { position: absolute; }
+			.relative { position: relative; }
+			.bottom0 { bottom: 0; }
+			.width100 { width: 100% }
+			.overflow-hidden { overflow: hidden; }
+			.tc { text-align: center; }
+			.center { margin-left: auto; margin-right: auto; }
+			.f7 { font-size: .75rem; }
+			.gray { color: #777; }
+
+			#page { padding: 10px 5px; }
+			.demo { width: 320px; height: 140px; max-width: 100%; border: 1px solid #ddd; }
+		</style>
+		<title>traverse-grid.js</title>
+	</head>
+	<body class="overflow-x-hidden">
+		<div id="page">
+			<div id="container" class="center relative" style="word-wrap: break-word;">
+				traverse-grid
+			</div>
+		</div>
+		<script src="traverse-grid.min.js" type="text/javascript"></script>
+		<script>
+			const t = traverse;
+			console.log(t);
+
+			var container = document.getElementById('container');
+			container.innerHTML = '<pre>'+t.pipe(t.spiral, t.visualize)(10,10)+'</pre>';
+		</script>
+	</body>
+</html>
