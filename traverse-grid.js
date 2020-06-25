@@ -241,8 +241,8 @@
 		},
 		trade: details => {
 			let points = [], to = details.points.length;
-			for(let index = 0; index < to; index += 2) points.push(details.points[index+1], details.points[index]);
-			to < details.points.length && points.push(details.points[to]);
+			for(let index = 0; index < to-1; index += 2) points.push(details.points[index+1], details.points[index]);
+			points.length < details.points.length && points.push(details.points[points.length]);
 			return k(details, points);
 		},
 		waterfall: details => {
