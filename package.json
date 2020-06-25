@@ -1,6 +1,6 @@
 {
   "name": "traverse-grid",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Traverse a grid a thousand ways the easy way",
   "main": "traverse-grid.js",
   "scripts": {

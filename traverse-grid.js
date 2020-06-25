@@ -366,10 +366,10 @@
 			);
 	};
 	t.pulse = type => {
-		let size = 1;
+		let size;
 		switch(type) {
 			case 'corner': return c(
-				() => ['w', 0, 0, 0, 0, 1],
+				() => { size = 1; return ['w', 0, 0, 0, 0, 1]; },
 				({ direction, x, y, base_x, height, width }) => {
 					switch(direction) {
 						case 'w': return base_x >= width-1 ? ['w', width-1, ++base_x, base_x, 0, width] : ['s', ++base_x, 0, base_x, 0, size++];
@@ -378,7 +378,7 @@
 				}
 			);
 			case 'edge': default: return c(
-				({ height }) => ['s', 0, Math.floor(height/2), 2, Math.floor(height/2), size],
+				({ height }) => { size = 1; return ['s', 0, Math.floor(height/2), 2, Math.floor(height/2), size]; },
 				({ direction, height, x, y, base_x, base_y, index }) => {
 					if(!index && !--size) return ['e', 0, --base_y, base_x, base_y, 1];
 					switch(direction) {
