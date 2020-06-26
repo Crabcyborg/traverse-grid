@@ -339,21 +339,53 @@
 	]);
 	t.diamond = (height, width) => {
 		const spike = { height: Math.ceil((width-2)/2), width: Math.ceil((height-2)/2) };
-		let diamond = {
+		const diamond = {
 			height: height + spike.height*2, width: width + spike.width*2,
 			size: height * width + t.triangleSize(height-2, 'isosceles') * 2 + t.triangleSize(width-2, 'isosceles') * 2
-		}, even_height = diamond.height % 2 === 0, even_width = diamond.width % 2 === 0, base_y = Math.floor((diamond.height-1)/2), size = base_y;
-		diamond = {
-			...diamond,
-			...c(() => ['ne', 0, base_y, 0, base_y, even_width ? size+1 : size], ({ direction, height, width, x, y, base_x, base_y, index }) => {
-				switch(direction) {
-					case 'ne': return ['se', x, even_width ? y+1 : y, base_x, base_y, even_height ? size+1 : size];
-					case 'se': return ['sw', even_height ? x-1 : x, y, base_x, base_y, even_width ? size+1 : size];
-					case 'sw': return ['nw', x, even_width ? y-1 : y, base_x, base_y, even_height ? size+1 : size];
-					case 'nw': return !even_height || size > 1 ? ['ne', ++base_x, base_y, base_x, base_y, even_width ? size-- : --size] : ['s', ++base_x, base_y, 0, 0, height];
-				}
-			}, diamond.size)(diamond.height, diamond.width)
 		};
+		let base_x = 0, x = base_x, base_y = Math.floor((diamond.height-1)/2), y = base_y, index = 0, keyed = {}, dir = 'ne', miny = 0;
+
+		keyed[[x,y]] = index++;
+		while(index < diamond.size) {
+			switch(dir) {
+				case 'ne': {
+					while(x + 1 < diamond.width && y - 1 >= miny && keyed[[x+1,y-1]] === undefined) {
+						++x, --y, keyed[[x,y]] = index++;
+						if(keyed[[x+1,y]] !== undefined) break;
+					}
+
+					dir = 'se';
+					if(diamond.width % 2 === 0) --y;
+				} break;	
+				case 'se': {
+					while(x + 1 < diamond.width && y + 1 < diamond.height && keyed[[x+1,y+1]] === undefined) {
+						++x, ++y, keyed[[x,y]] = index++;
+						if(keyed[[x,y+1]] !== undefined) break;
+					}
+
+					dir = 'sw';
+					if(diamond.height % 2 === 0) ++x;
+				} break;
+				case 'sw': {
+					while(x - 1 >= 0 && y + 1 < diamond.height && keyed[[x-1,y+1]] === undefined) {
+						--x, ++y, keyed[[x,y]] = index++;
+						if(keyed[[x-1,y]] !== undefined) break;
+					}
+					dir = 'nw';
+					if(diamond.width % 2 === 0) ++y;
+				} break;
+				case 'nw': {
+					while(x - 1 >= 0 && y - 1 >= 0 && keyed[[x-1,y-1]] === undefined) {
+						--x, --y, keyed[[x,y]] = index++;
+						if(keyed[[x,y-1]] !== undefined) break;
+					}
+
+					dir = 'ne', x = base_x++, y = base_y+1;
+				} break;
+			}
+		}
+
+		diamond.keyed = keyed;
 		return { ...t.slice({top: spike.height, bottom: diamond.height-spike.height, left: spike.width, right: diamond.width-spike.width})(diamond), spike, diamond, height, width };
 	};
 	t.fan = (height, width) => {
