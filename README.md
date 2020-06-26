@@ -6,7 +6,9 @@ visualization as a path https://crabcyb.org/experiment/traverse-paperjs
 
 visualization as an animation https://crabcyb.org/experiment/traverse-animated
 
-additional mutations can be found here https://crabcyb.org/post/traverse-mutations 
+additional mutations can be found here https://crabcyb.org/post/traverse-mutations
+
+unit tests written in QUnit are hosted here https://crabcyb.org/post/traverse-qunit
 
 The main goals of traverse-grid are:
 1. Allow iteration through a grid of data in a repeatable pre-defined sequence
